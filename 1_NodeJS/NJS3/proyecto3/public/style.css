@@ -1,0 +1,9 @@
+body { font-family: 'Outfit', sans-serif; background: #f0f2f5; }
+.zona-interactiva {
+  background: #e9ecef;
+  border: 2px dashed #adb5bd;
+  height: 80px;
+  font-weight: 600;
+  color: #495057;
+}
+#panel-hijos { min-height: 80px; }

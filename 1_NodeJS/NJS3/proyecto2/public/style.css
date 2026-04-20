@@ -1,0 +1,19 @@
+body {
+    font-family: 'Outfit', sans-serif;
+    background: #f0f2f5;
+}
+
+.zona-interactiva {
+    background: #e9ecef;
+    border: 2px dashed #adb5bd;
+    height: 160px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #495057;
+    transition: background 0.3s, color 0.3s;
+    user-select: none;
+}
+
+.zona-interactiva:hover {
+    background: #dee2e6;
+}

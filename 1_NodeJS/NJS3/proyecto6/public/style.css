@@ -1,0 +1,36 @@
+body {
+  font-family: 'Outfit', sans-serif;
+  background: #f0f2f5;
+}
+
+/* FIX: navbar no desborda en móvil */
+.navbar-brand {
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+.dato-fila {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #dee2e6;
+  gap: 8px;
+}
+
+.dato-fila:last-child {
+  border-bottom: none;
+}
+
+.dato-label {
+  font-weight: 600;
+  color: #495057;
+  flex-shrink: 0;
+}
+
+.dato-valor {
+  color: #212529;
+  text-align: right;
+  /* FIX: valores largos (email) no rompen el layout */
+  word-break: break-all;
+}

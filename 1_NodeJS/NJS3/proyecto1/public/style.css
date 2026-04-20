@@ -1,0 +1,22 @@
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: #f5f7fa;
+}
+
+.fw-black { font-weight: 900; }
+
+#titulo-dom {
+    font-family: 'Outfit', sans-serif;
+font-size: 2.5rem;
+font-weight: 900;
+transition: color 0.4s ease;
+margin-bottom: 1rem;
+}
+
+#imagen-dom {
+border-radius: 8px;
+border: 3px solid #dee2e6;
+transition: width 0.4s ease, height 0.4s ease;
+display: block;
+margin-top: 1rem;
+}
