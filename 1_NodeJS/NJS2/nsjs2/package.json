@@ -1,0 +1,12 @@
+{
+  "name": "tp-node",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "upper-case": "^2.0.2"
+  }
+}
