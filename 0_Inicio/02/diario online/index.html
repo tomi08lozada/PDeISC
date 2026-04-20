@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Diario Digital</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+
+<style>
+    body { font-family: 'Roboto', sans-serif; background: #f4f4f4; }
+    header h1 { font-family: 'Playfair Display', serif; font-size: 48px; }
+    .etiqueta { color: red; font-weight: bold; font-size: 14px; }
+    .titular-principal { font-family: 'Playfair Display', serif; color: #b00000; }
+    .noticia h3 { color: #003366; font-family: 'Playfair Display', serif; }
+    .noticia { transition: 0.3s; }
+    .noticia:hover { transform: translateY(-8px); box-shadow: 0px 10px 20px rgba(0,0,0,0.2); }
+    .noticia img, .principal img { width: 100%; object-fit: cover; border-radius: 5px; }
+    a { text-decoration: none; color: inherit; }
+</style>
+</head>
+
+<body>
+
+<header class="bg-black text-white text-center py-4">
+    <h1>El Diario Digital</h1>
+</header>
+
+<nav class="bg-dark text-center py-2">
+    <a href="index.html" class="text-white mx-3 fs-5">Inicio</a>
+    <a href="politica.html" class="text-white mx-3 fs-5">Política</a>
+    <a href="deportes.html" class="text-white mx-3 fs-5">Deportes</a>
+    <a href="formulario.html" class="text-white mx-3 fs-5">Contacto👤</a>
+</nav>
+
+    <div class="container my-4" style="max-width: 85%;">
+
+    <!-- NOTICIA PRINCIPAL -->
+    <a href="detalle.html?id=0">
+    <div class="principal bg-white p-4 mb-4 rounded" style="cursor:pointer;">
+        <span class="etiqueta">NOTICIA PRINCIPAL</span>
+        <img src="DqNsw4HKs_1256x620__1.jpg" class="rounded mb-3 w-100" style="height:clamp(180px,30vw,350px);">
+        <h2 class="fs-5 fs-md-3 titular-principal">Guerra entre Estados Unidos, Israel e Irán, EN VIVO: Trump afirma que Mojtaba Khamenei podría estar muerto y que no sabe quién gobierna Irán</h2>
+        <p class="text-dark">En el día 17 del conflicto bélico, Israel lanzó una nueva oleada de bombardeos e Irán respondió con ataques contra Tel Aviv y bases de Estados Unidos.</p>
+    </div>
+    </a>
+
+    <!-- GRID -->
+    <div class="row g-4">
+
+    <div class="col-12 col-md-6"><a href="detalle.html?id=1">
+        <div class="noticia bg-white p-3 rounded h-100">
+        <img src="a-horas-de-presentarse-a-declarar-en-la-causa-cuadernos-cristina-kirchner-critico-a-la-justicia-el-show-debe-continuar-foto-la-campora-7PSDX6YMMNDQRKXYPT4BKXMF4I.avif">
+        <h3>A horas de presentarse a declarar en la Causa Cuadernos, Cristina Kirchner criticó a la Justicia: "El show debe continuar"</h3>
+        <p class="text-secondary">La expresidenta cuestionó que la hayan citado de forma presencial en Comodoro Py.</p>
+        </div>
+    </a></div>
+
+    <div class="col-12 col-md-6"><a href="detalle.html?id=2">
+        <div class="noticia bg-white p-3 rounded h-100">
+        <img src="https___thumbs.vodgc.net_1-14-NmnoTa1773662276592-1773664866.avif">
+        <h3>Las pruebas que complican al policía detenido por el crimen del profesor en La Matanza</h3>
+        <p class="text-secondary">Oficial de la Base UTOI "Puente 12". Será indagado por el fiscal en las próximas horas.</p>
+        </div>
+    </a></div>
+
+    <div class="col-12 col-md-6"><a href="detalle.html?id=3">
+        <div class="noticia bg-white p-3 rounded h-100">
+        <img src="james-vowles-lidero-a-franco-colapinto-durante-su-paso-por-williams-foto-x-jvf1-EAARN7LGGZEBJIURO3CHPJSXWA.jpg">
+        <h3>Franco Colapinto recibió un cariñoso mensaje de su exequipo luego de su buena actuación en el GP de China en la F1</h3>
+        <p class="text-secondary">Williams le dejó un cálido comentario tras lograr su primer punto con Alpine.</p>
+        </div>
+    </a></div>
+
+    <div class="col-12 col-md-6"><a href="detalle.html?id=4">
+        <div class="noticia bg-white p-3 rounded h-100">
+        <img src="juan-roman-riquelme-presidente-de-boca-foto-fotobaires-JX6IO33HARGWTPLTQP5MW3FOIU.avif">
+        <h3>Juan Román Riquelme tuvo una charla privada con el plantel de Boca luego del empate con Unión</h3>
+        <p class="text-secondary">El presidente del Xeneize recurrió a una acción típica en su gestión.</p>
+        </div>
+    </a></div>
+
+    <div class="col-12 col-md-6"><a href="detalle.html?id=5">
+        <div class="noticia bg-white p-3 rounded h-100">
+        <img src="https___thumbs.vodgc.net_1-14-vwz0bb1773690046201-1773698430.avif">
+        <h3>Diputados: la comisión investigadora de la causa Libra pidió que Javier y Karina Milei den explicaciones</h3>
+        <p class="text-secondary">Maximiliano Ferraro aseguró que ambos fueron clave para la promoción de la criptomoneda.</p>
+        </div>
+    </a></div>
+
+    <div class="col-12 col-md-6"><a href="detalle.html?id=6">
+        <div class="noticia bg-white p-3 rounded h-100">
+            <img src="comb.avif">
+            <h3>Los precios de los combustibles subieron casi 9% en Argentina desde que se desató la guerra en Medio Oriente</h3>
+            <p class="text-secondary">Nuevos aumentos generan preocupación por el impacto en la inflación de marzo.</p>
+        </div>
+    </a></div>
+
+    <div class="col-12 col-md-6"><a href="detalle.html?id=7">
+        <div class="noticia bg-white p-3 rounded h-100">
+        <img src="esp.avif">
+        <h3>El anuncio que hizo la Selección de España luego de la cancelación de la Finalissima ante Argentina</h3>
+        <p class="text-secondary">El conjunto europeo busca ultimar detalles de su preparación para el Mundial 2026.</p>
+        </div>
+    </a></div>
+
+    <div class="col-12 col-md-6"><a href="detalle.html?id=8">
+        <div class="noticia bg-white p-3 rounded h-100">
+        <img src="che.avif">
+        <h3>Cuba sufre un apagón total y anuncia que los emigrados y sus descendientes podrán abrir negocios en la isla</h3>
+        <p class="text-secondary">Es el sexto corte eléctrico nacional en el último año y medio. Crecen las protestas.</p>
+        </div>
+    </a></div>
+
+    <div class="col-12 col-md-6"><a href="detalle.html?id=9">
+        <div class="noticia bg-white p-3 rounded h-100">
+        <img src="marcelo.avif">
+        <h3>Murió Marcelo Araujo, el relator que marcó una época con sus transmisiones del fútbol argentino</h3>
+        <p class="text-secondary">Junto a Macaya Márquez dominaron la narración futbolera en los 90.</p>
+        </div>
+    </a></div>
+
+    </div>
+</div>
+
+    <footer class="bg-black text-white text-center py-3 mt-5">
+    <p class="mb-0">© 2026 El Diario Digital</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+</body>
+</html>

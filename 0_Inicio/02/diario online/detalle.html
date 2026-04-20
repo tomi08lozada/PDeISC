@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Diario Digital</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Roboto', sans-serif; background: #f4f4f4; }
+    header h1 { font-family: 'Playfair Display', serif; font-size: 48px; }
+    .etiqueta { color: red; font-weight: bold; font-size: 14px; }
+    #detalle-titulo { font-family: 'Playfair Display', serif; color: #003366; }
+    a { text-decoration: none; color: inherit; }
+
+    /* Botón flotante */
+    #btn-volver {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      z-index: 999;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="bg-black text-white text-center py-4">
+    <h1>El Diario Digital</h1>
+  </header>
+
+  <nav class="bg-dark text-center py-2">
+    <a href="index.html" class="text-white mx-3 fs-5">Inicio</a>
+    <a href="politica.html" class="text-white mx-3 fs-5">Política</a>
+    <a href="deportes.html" class="text-white mx-3 fs-5">Deportes</a>
+    <a href="formulario.html" class="text-white mx-3 fs-5">Contacto👤</a>
+  </nav>
+
+  <!-- CONTENIDO DEL DETALLE -->
+  <div class="container my-4" style="max-width: 85%;">
+    <div class="bg-white p-4 rounded shadow-sm">
+
+      <span id="detalle-etiqueta" class="etiqueta"></span>
+      <img id="detalle-img" src="" class="w-100 rounded my-3" style="max-height: 420px; object-fit: cover;">
+      <h2 id="detalle-titulo" class="fs-4"></h2>
+      <p id="detalle-copete" class="text-secondary fw-bold mt-2 fs-6 border-start border-danger border-3 ps-3"></p>
+      <div id="detalle-cuerpo" class="mt-3 lh-lg"></div>
+
+    </div>
+  </div>
+
+  <footer class="bg-black text-white text-center py-3 mt-5">
+    <p class="mb-0">© 2026 El Diario Digital</p>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE VOLVER -->
+  <button id="btn-volver" onclick="history.back()" class="btn btn-dark rounded-circle shadow-lg">←</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+  <script>
+    const noticias = [
+      {
+        etiqueta: "NOTICIA PRINCIPAL",
+        img: "DqNsw4HKs_1256x620__1.jpg",
+        titulo: "Guerra entre Estados Unidos, Israel e Irán, EN VIVO: Trump afirma que Mojtaba Khamenei podría estar muerto y que no sabe quién gobierna Irán",
+        copete: "En el día 17 del conflicto bélico, Israel lanzó una nueva oleada de bombardeos e Irán respondió con ataques contra Tel Aviv y bases de Estados Unidos. Crece el misterio y los rumores por el paradero del nuevo líder supremo.",
+        cuerpo: [
+          "La guerra entre Israel, Estados Unidos e Irán entró este martes en su decimoséptimo día con una escalada sin precedentes. Las fuerzas israelíes lanzaron durante la madrugada una serie de bombardeos coordinados sobre instalaciones militares en el norte de Irán, mientras que aviones de combate estadounidenses apoyaron la operación desde portaviones posicionados en el Golfo Pérsico.",
+          "En paralelo, el régimen iraní respondió con una andanada de misiles balísticos dirigidos hacia Tel Aviv y hacia bases militares norteamericanas en Irak y Siria. Según fuentes del Pentágono, los sistemas de defensa interceptaron la mayoría de los proyectiles, aunque se reportaron daños menores en dos instalaciones en el norte de Siria.",
+          "El punto más desconcertante del día llegó cuando el presidente Donald Trump, en una conferencia de prensa improvisada desde la Casa Blanca, afirmó que Mojtaba Khamenei, hijo del líder supremo Alí Khamenei y señalado como su posible sucesor, podría haber muerto en uno de los ataques recientes. 'No sé quién está gobernando Irán en este momento, honestamente no lo sé', declaró Trump ante la prensa.",
+          "La comunidad internacional reaccionó con alarma ante las palabras del mandatario estadounidense. Rusia y China convocaron de urgencia una sesión del Consejo de Seguridad de la ONU, mientras que la Unión Europea pidió un cese inmediato de las hostilidades. Desde Teherán, el gobierno iraní no emitió ninguna declaración oficial sobre el paradero de Mojtaba Khamenei, lo que profundizó la incertidumbre.",
+          "En Israel, la población de Tel Aviv pasó gran parte del día en refugios antiaéreos mientras las sirenas de alarma sonaban intermitentemente. El primer ministro israelí convocó al gabinete de seguridad para las próximas horas, en una sesión que se desarrollará bajo estricta confidencialidad."
+        ]
+      },
+      {
+        etiqueta: "POLÍTICA",
+        img: "a-horas-de-presentarse-a-declarar-en-la-causa-cuadernos-cristina-kirchner-critico-a-la-justicia-el-show-debe-continuar-foto-la-campora-7PSDX6YMMNDQRKXYPT4BKXMF4I.avif",
+        titulo: 'A horas de presentarse a declarar en la Causa Cuadernos, Cristina Kirchner criticó a la Justicia: "El show debe continuar"',
+        copete: "La expresidenta publicó un mensaje en las redes sociales en el que cuestionó que la hayan citado de forma presencial en Comodoro Py. También cruzó a Javier Milei por su programa económico.",
+        cuerpo: [
+          "A pocas horas de tener que presentarse ante el Tribunal Oral Federal N°2 para declarar en la causa conocida como 'Cuadernos de las coimas', la expresidenta Cristina Fernández de Kirchner salió con los tapones de punta en sus redes sociales.",
+          "En un extenso mensaje publicado en su cuenta de X, CFK cuestionó duramente la convocatoria presencial en Comodoro Py, sede de los tribunales federales porteños. 'Me citan de forma presencial cuando hace años vengo declarando por videoconferencia. El show mediático-judicial debe continuar', escribió la expresidenta, haciendo una clara alusión a lo que ella denomina 'lawfare'.",
+          "En el mismo texto, Kirchner aprovechó para apuntar contra el gobierno de Javier Milei y su programa económico. Señaló que mientras la Justicia 'persigue opositores', la gestión libertaria 'destruye el salario de los argentinos y entrega la soberanía al FMI'. Sus palabras generaron una inmediata reacción en el oficialismo.",
+          "Desde el entorno del presidente Milei respondieron que 'la Justicia actúa con independencia' y que cualquier intento de victimización por parte de Kirchner 'no hace más que confirmar lo que los argentinos ya saben'. El vocero presidencial Manuel Adorni descartó hacer declaraciones al respecto durante su habitual conferencia de prensa matutina.",
+          "La audiencia está prevista para las 10 de la mañana. Se espera una importante presencia de militantes kirchneristas frente a Comodoro Py en apoyo a la expresidenta, así como un fuerte operativo de seguridad en los alrededores del edificio judicial."
+        ]
+      },
+      {
+        etiqueta: "POLICIALES",
+        img: "https___thumbs.vodgc.net_1-14-NmnoTa1773662276592-1773664866.avif",
+        titulo: "Las pruebas que complican al policía detenido por el crimen del profesor en La Matanza: la pista en el arma y el historial de la app de viajes",
+        copete: 'Se trata de un oficial nuevo que presta servicio en la Base UTOI "Puente 12". Será indagado por el fiscal en las próximas horas.',
+        cuerpo: [
+          "El oficial de policía detenido en las últimas horas como principal sospechoso del asesinato del profesor de educación física Rodrigo Altamirano, ocurrido el pasado jueves en el partido de La Matanza, enfrenta un cuadro probatorio que se complica hora a hora.",
+          "Según pudo reconstruir este medio a partir de fuentes judiciales, una de las pruebas más contundentes que obtuvo la fiscalía es el registro balístico del arma reglamentaria del efectivo. Los peritos determinaron que el proyectil extraído del cuerpo de la víctima tiene compatibilidad con la pistola que portaba el agente al momento de su detención, aunque el informe definitivo de balística aún está pendiente.",
+          "Pero hay más. El historial de la aplicación de viajes que el oficial tenía instalada en su celular lo ubica en las inmediaciones del domicilio de Altamirano en al menos tres ocasiones durante la semana previa al crimen, incluyendo la noche del hecho. Esa información, obtenida mediante una orden judicial de extracción de datos, fue clave para que el fiscal solicitara la detención.",
+          "El sospechoso, que tiene menos de dos años en la fuerza y estaba asignado a la Base UTOI Puente 12 en el partido de La Matanza, negó cualquier vinculación con el crimen durante el procedimiento de detención. Su abogado defensor, designado de oficio, solicitó tiempo para revisar las actuaciones antes de la indagatoria.",
+          "El fiscal a cargo de la investigación prevé tomar declaración indagatoria al detenido en las próximas horas. De acuerdo a las fuentes consultadas, el móvil del crimen podría estar vinculado a una disputa personal que el oficial mantenía con la víctima desde hace varios meses."
+        ]
+      },
+      {
+        etiqueta: "FÓRMULA 1",
+        img: "james-vowles-lidero-a-franco-colapinto-durante-su-paso-por-williams-foto-x-jvf1-EAARN7LGGZEBJIURO3CHPJSXWA.jpg",
+        titulo: "Franco Colapinto recibió un cariñoso mensaje de su exequipo luego de su buena actuación en el GP de China en la F1",
+        copete: "El exequipo del piloto argentino le dejó un cálido comentario en las redes sociales tras haber logrado su primer punto con Alpine el fin de semana.",
+        cuerpo: [
+          "El Gran Premio de China dejó una postal que emocionó a los fanáticos argentinos de la Fórmula 1: Franco Colapinto logró su primer punto en la máxima categoría con Alpine, terminando décimo en una carrera que supo administrar con una madurez que sorprendió a más de un experto.",
+          "Apenas se conoció el resultado, Williams Racing, el equipo donde el piloto de Pilar debutó en la F1 la temporada pasada, no tardó en reaccionar. Desde su cuenta oficial en X, la escudería británica le dejó un mensaje que fue ampliamente celebrado: 'Una vez Williams, siempre Williams. Ese punto tiene nombre y apellido. Felicitaciones, Franco'.",
+          "El posteo acumuló miles de 'me gusta' en pocas horas y generó una enorme respuesta de los fanáticos argentinos, que inundaron los comentarios con banderas celestes y blancas. El propio Colapinto respondió con un emoji de corazón y las palabras: 'Siempre en mi corazón, chicos'.",
+          "James Vowles, director del equipo Williams, también se manifestó en sus redes personales. El ingeniero británico que apostó por Colapinto cuando nadie lo conocía escribió: 'Sabíamos que este chico tenía algo especial. Nos alegra ver que el mundo lo está viendo también'.",
+          "Con este resultado, Colapinto suma sus primeros puntos en el campeonato y se posiciona mejor de lo esperado dentro de Alpine, donde disputa un lugar con el experimentado Pierre Gasly. Los próximos grandes premios serán clave para definir si el argentino consolida su lugar en la grilla."
+        ]
+      },
+      {
+        etiqueta: "FÚTBOL",
+        img: "juan-roman-riquelme-presidente-de-boca-foto-fotobaires-JX6IO33HARGWTPLTQP5MW3FOIU.avif",
+        titulo: "Juan Román Riquelme tuvo una charla privada con el plantel de Boca luego del empate con Unión",
+        copete: "El presidente del Xeneize recurrió a una acción típica en su gestión a raíz del último resultado que obtuvo el equipo de Claudio Úbeda contra el Tatengue.",
+        cuerpo: [
+          "El empate sin goles de Boca Juniors ante Unión de Santa Fe en el estadio 15 de Abril no cayó bien en la dirigencia xeneize. Apenas terminó el partido, Juan Román Riquelme bajó al vestuario y pidió hablar con los jugadores a puertas cerradas, en una escena que se ha repetido varias veces desde que el ídolo asumió la presidencia del club.",
+          "Según relataron fuentes cercanas al plantel, la charla duró aproximadamente veinte minutos y Riquelme habló con calma pero con firmeza. El mensaje habría girado en torno a la necesidad de mejorar el rendimiento colectivo y de asumir mayor protagonismo en el juego, dos aspectos que el equipo de Claudio Úbeda no ha mostrado con regularidad en este inicio de torneo.",
+          "No es la primera vez que el presidente recurre a este tipo de intervención directa. Riquelme tiene el hábito de bajar al vestuario cuando los resultados no lo satisfacen, algo que algunos jugadores valoran como un gesto de cercanía y otros viven con cierta presión. En el cuerpo técnico, la presencia del presidente es aceptada aunque genera tensión interna que no siempre se ventila públicamente.",
+          "Úbeda, por su parte, habló en conferencia de prensa y defendió el trabajo del equipo. 'Tuvimos situaciones para ganar el partido, no las pudimos concretar. Hay que seguir trabajando', dijo el entrenador, sin hacer referencia a la charla de Riquelme con el plantel.",
+          "Boca acumula ya tres partidos sin victorias en el torneo local y la presión empieza a crecer. El próximo compromiso será el domingo como local en La Bombonera, un escenario donde el Xeneize necesita urgentemente volver a ganar para calmar las aguas."
+        ]
+      },
+      {
+        etiqueta: "POLÍTICA",
+        img: "https___thumbs.vodgc.net_1-14-vwz0bb1773690046201-1773698430.avif",
+        titulo: "Diputados: la comisión investigadora de la causa Libra pidió que Javier y Karina Milei den explicaciones",
+        copete: "El legislador de la Coalición Cívica, Maximiliano Ferraro, aseguró que el mandatario y su hermana fueron clave para la promoción de la criptomoneda a comienzos del año pasado.",
+        cuerpo: [
+          "La comisión bicameral que investiga el escándalo de la criptomoneda Libra en la Cámara de Diputados aprobó este lunes por mayoría un dictamen que solicita formalmente la comparecencia del presidente Javier Milei y de su hermana y secretaria general de la Presidencia, Karina Milei, para brindar explicaciones sobre su rol en la promoción del activo digital.",
+          "El legislador Maximiliano Ferraro, de la Coalición Cívica, fue uno de los más duros durante el plenario. 'Hay evidencia documental y testimonial que demuestra que tanto el presidente como su hermana impulsaron activamente la difusión de Libra a comienzos del año pasado, cuando el token cotizaba en alza y miles de inversores compraron confiando en el respaldo oficial', sostuvo Ferraro.",
+          "El diputado también cruzó al fiscal federal Eduardo Taiano, a quien acusó de 'entorpecer la investigación judicial' al demorar la remisión de documentación clave solicitada por el juez interviniente. Taiano aún no respondió públicamente a esas acusaciones.",
+          "Desde La Libertad Avanza, los diputados del bloque oficialista votaron en contra del dictamen y calificaron la investigación como 'una operación política de la oposición para desgastar al gobierno'. El diputado Santiago Santurio aseguró que 'el presidente no tiene nada que ver con la estafa de Libra y lo demostrará si es necesario'.",
+          "La citación deberá ser ratificada por el pleno de la Cámara, lo que se prevé que ocurra en la sesión del próximo jueves. Si Milei y su hermana no concurren voluntariamente, la comisión evaluará otros mecanismos legales para obtener su declaración."
+        ]
+      },
+      {
+        etiqueta: "ECONOMÍA",
+        img: "comb.avif",
+        titulo: "Los precios de los combustibles subieron casi 9% en Argentina desde que se desató la guerra en Medio Oriente",
+        copete: "De acuerdo a un relevamiento privado, se registraron nuevos aumentos en los valores de venta en los surtidores. Los incrementos generan preocupación por el traslado a la cifra de inflación de marzo.",
+        cuerpo: [
+          "El conflicto bélico en Medio Oriente está teniendo un impacto directo en los bolsillos de los argentinos. Desde que estalló la guerra entre Israel, Estados Unidos e Irán hace poco más de dos semanas, los precios de los combustibles en el país acumularon una suba de casi 9%, según un relevamiento realizado por la consultora Econviews en base a datos de estaciones de servicio de todo el país.",
+          "El aumento se explica principalmente por el salto en el precio internacional del petróleo crudo, que trepó más de un 18% en dólares desde el inicio del conflicto. Aunque Argentina tiene producción propia de hidrocarburos, las refinadoras locales ajustan sus precios en función de las referencias internacionales, por lo que el traslado al surtidor fue casi inmediato.",
+          "YPF, la empresa con mayor participación en el mercado de combustibles, aplicó dos aumentos desde el inicio de la guerra: uno de 4,2% y otro de 4,5%. Shell y Axion siguieron de cerca, con subas similares. En algunas provincias con mayor dependencia del transporte de carga, el gasoil ya escasea en algunos puntos de venta.",
+          "El dato preocupa especialmente en el contexto del índice de inflación de marzo, que se conocerá a mediados de abril. Los combustibles tienen un impacto transversal en la economía porque encarecen el transporte de mercaderías y, por tanto, presionan sobre los precios de todos los bienes. Los economistas consultados estimaron que el efecto de los combustibles podría sumar entre 0,5 y 0,8 puntos porcentuales a la inflación del mes.",
+          "Desde el Ministerio de Economía señalaron que están 'monitoreando la situación' pero descartaron por el momento aplicar retenciones adicionales a las exportaciones de petróleo o intervenir en los precios de venta al público. La situación podría revisarse si el conflicto se prolonga y el barril de crudo continúa escalando en los mercados internacionales."
+        ]
+      },
+      {
+        etiqueta: "FÚTBOL",
+        img: "esp.avif",
+        titulo: "El anuncio que hizo la Selección de España luego de la cancelación de la Finalissima ante Argentina",
+        copete: "El conjunto europeo busca ultimar detalles de su preparación para el Mundial 2026.",
+        cuerpo: [
+          "La Selección de España confirmó este lunes un nuevo amistoso internacional para reemplazar la Finalissima ante Argentina, que fue cancelada semanas atrás debido a los conflictos en la agenda de ambas federaciones y la saturación del calendario futbolístico europeo.",
+          "La Real Federación Española de Fútbol (RFEF) anunció que el equipo dirigido por Luis de la Fuente disputará un partido preparatorio ante Francia el próximo 4 de junio en el Stade de France, en lo que será un duelo de alta intensidad entre dos de los candidatos al título en el Mundial 2026 que se disputará en Estados Unidos, México y Canadá.",
+          "'Era importante no perder esa fecha FIFA. Jugar contra Francia es una de las mejores pruebas que podemos tener antes del Mundial. Nos conocemos bien y siempre son partidos muy exigentes', declaró De la Fuente en conferencia de prensa desde la Ciudad del Fútbol de Las Rozas.",
+          "España llega a este tramo del año en un buen momento de forma. El equipo viene de clasificar invicto para el Mundial y varios de sus jugadores atraviesan temporadas brillantes en sus clubes. Lamine Yamal y Nico Williams son las grandes figuras en las que se apoya el esquema del seleccionado europeo.",
+          "La cancelación de la Finalissima con Argentina generó cierta decepción en ambos lados del Atlántico, ya que el partido enfrentaba a los campeones de Europa y América. Desde la AFA no descartaron que el encuentro pueda reprogramarse para una fecha posterior al Mundial, aunque por ahora no hay nada confirmado."
+        ]
+      },
+      {
+        etiqueta: "INTERNACIONAL",
+        img: "che.avif",
+        titulo: "Cuba sufre un apagón total y anuncia que los emigrados y sus descendientes podrán abrir negocios en la isla",
+        copete: "Es el sexto corte de suministro eléctrico nacional en el último año y medio. Crecen las protestas y cacerolazos.",
+        cuerpo: [
+          "Cuba amaneció este lunes sin electricidad en prácticamente todo el territorio nacional, en lo que representa el sexto apagón total que sufre la isla en los últimos dieciocho meses. El colapso del sistema eléctrico se produjo durante la madrugada, cuando una falla en cadena en las principales termoeléctricas del país dejó sin suministro a más de 11 millones de personas.",
+          "En La Habana, Santiago de Cuba y Holguín se registraron cacerolazos y protestas espontáneas en distintos barrios, con ciudadanos saliendo a las calles a golpear ollas y pedir soluciones. Las fuerzas de seguridad se desplegaron en los puntos de mayor concentración, aunque por el momento no se reportaron incidentes graves.",
+          "En medio de la crisis, el gobierno cubano realizó un anuncio sorpresivo que generó debate: a partir de una nueva resolución del Ministerio de Economía, los cubanos emigrados y sus descendientes directos podrán registrar y operar pequeñas y medianas empresas en la isla, siempre que cumplan con ciertos requisitos burocráticos y tributen en el país.",
+          "La medida es vista por algunos analistas como un gesto de apertura económica forzado por la desesperación, mientras que sectores del exilio cubano en Miami la califican de 'trampa' para atraer divisas sin garantizar derechos políticos. 'El régimen quiere nuestro dinero pero no nos da libertad', escribió en redes sociales una reconocida activista cubana radicada en Florida.",
+          "El gobierno prevé restablecer el servicio eléctrico de forma gradual en las próximas 36 horas, aunque se trata de un plazo que ya ha incumplido en ocasiones anteriores. La situación energética de Cuba se deteriora desde 2023 y no hay señales claras de una solución estructural a corto plazo."
+        ]
+      },
+      {
+        etiqueta: "FÚTBOL",
+        img: "marcelo.avif",
+        titulo: "Murió Marcelo Araujo, el relator que marcó una época con sus transmisiones del fútbol argentino",
+        copete: "Junto a Enrique Macaya Márquez fueron la dupla futbolera que dominó la década de los 90. Tuvo una forma única de describir los partidos que lo hicieron muy popular.",
+        cuerpo: [
+          "El mundo del fútbol argentino está de luto. Marcelo Araujo, uno de los relatores más queridos y reconocibles de la historia del periodismo deportivo nacional, falleció este domingo a los 74 años tras una larga enfermedad que lo había alejado de los medios en los últimos años.",
+          "Araujo fue la voz que acompañó a varias generaciones de argentinos en las transmisiones de El Trece y Canal 13 durante los años 80 y 90. Su estilo inconfundible, con esas pausas dramáticas antes de gritar el gol y sus descripciones casi poéticas de las jugadas, lo convirtieron en un referente absoluto del género.",
+          "La dupla que formó con Enrique Macaya Márquez es considerada por muchos como la más memorable en la historia del fútbol por televisión en Argentina. Juntos narraron clásicos que quedaron grabados en la memoria colectiva: finales de Copa Libertadores, partidos de la Selección y los grandes encuentros del fútbol local de aquella época dorada.",
+          "Las reacciones en el mundo del deporte y los medios no se hicieron esperar. Figuras como Marcelo Tinelli, que compartió pantalla con Araujo en aquellos años, y decenas de exfutbolistas que fueron narrados por su voz le rindieron homenaje en redes sociales. 'Una voz que ya es parte de la historia del fútbol argentino', escribió Tinelli.",
+          "Araujo deja una huella imborrable en quienes crecieron escuchándolo. Su legado trasciende los números y los títulos: es la emoción de una generación entera que aprendió a amar el fútbol también a través de su voz."
+        ]
+      }
+    ];
+
+    // Lee el parámetro ?id=X de la URL
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get('id'));
+
+    // Si el id es válido, carga los datos
+    if (!isNaN(id) && noticias[id]) {
+      const n = noticias[id];
+      document.getElementById('detalle-etiqueta').textContent = n.etiqueta;
+      document.getElementById('detalle-img').src = n.img;
+      document.getElementById('detalle-titulo').textContent = n.titulo;
+      document.getElementById('detalle-copete').textContent = n.copete;
+      document.title = n.titulo;
+
+      // Genera un <p> por cada párrafo del cuerpo
+      const cuerpoEl = document.getElementById('detalle-cuerpo');
+      n.cuerpo.forEach(function(parrafo) {
+        const p = document.createElement('p');
+        p.textContent = parrafo;
+        cuerpoEl.appendChild(p);
+      });
+    } else {
+      window.location.href = 'index.html';
+    }
+  </script>
+
+</body>
+</html>
