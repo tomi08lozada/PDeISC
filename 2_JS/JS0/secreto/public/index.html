@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Proyecto — Mensajes secretos</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container">
+    <div class="method-badge">Proyecto Extra</div>
+    <h1>Mensajes <span>Secretos</span></h1>
+  </div>
+</section>
+
+<div class="container my-5">
+  <div class="row g-4">
+
+    <div class="col-12">
+      <div class="exercise-card" data-num="01">
+        
+        <h5>🔐 Decodificar mensaje</h5>
+        <p class="desc">Invierte el texto que esté entre paréntesis.</p>
+
+        <label class="label-small">Mensaje</label>
+        <input type="text" id="inputMsg" class="form-control" placeholder="Ej: Hoy (.sh 22 sal a) ...">
+
+        <button class="btn-run mt-3" onclick="decodificar()">▶ Decodificar</button>
+
+        <div class="output-area mt-3" id="output"></div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
