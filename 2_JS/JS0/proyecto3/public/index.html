@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Proyecto 3 — unshift()</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <section class="hero">
+    <div class="container">
+      <div class="method-badge">Array Methods · Proyecto 3</div>
+      <h1>Array.<span>unshift()</span></h1>
+      <p class="subtitle">Agrega uno o más elementos al <strong>principio</strong> del array y retorna la nueva longitud.</p>
+    </div>
+  </section>
+
+  <div class="container my-5">
+    <div class="row g-4">
+
+      <div class="col-12 col-lg-4">
+        <div class="exercise-card" data-num="01">
+          <h5>🎨 Agregar colores al inicio</h5>
+          <p class="desc">Agrega tres colores al principio de un array vacío usando <code>unshift()</code>.</p>
+          <div class="code-preview">
+<pre>const colores = [];
+colores.unshift('Azul');
+colores.unshift('Rojo');
+colores.unshift('Verde');
+// → ['Verde','Rojo','Azul']</pre>
+          </div>
+          <button class="btn-run mt-3" onclick="runEj1()">▶ Ejecutar</button>
+          <div class="output-area mt-3" id="output1" style="display:none"></div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <div class="exercise-card" data-num="02">
+          <h5>⚡ Tarea urgente primero</h5>
+          <p class="desc">Dado un array de tareas, agrega una nueva tarea urgente al principio.</p>
+          <div class="code-preview">
+<pre>const tareas = ['Estudiar','Leer','Hacer gym'];
+tareas.unshift('🚨 URGENTE: Entregar proyecto');</pre>
+          </div>
+          <div class="mt-3">
+            <label class="label-small">Agregar tarea urgente:</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="tarea-input" placeholder="Descripción de la tarea..." />
+              <button class="btn-accent" onclick="runEj2()">Agregar</button>
+            </div>
+          </div>
+          <div class="output-area mt-3" id="output2" style="display:none"></div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <div class="exercise-card" data-num="03">
+          <h5>👤 Usuario conectado primero</h5>
+          <p class="desc">Inserta el nombre de un usuario al principio del array de usuarios conectados.</p>
+          <div class="code-preview">
+<pre>const usuarios = ['Ana','Luis','Pedro'];
+usuarios.unshift(nuevoUsuario);
+// El nuevo aparece primero</pre>
+          </div>
+          <div class="mt-3">
+            <label class="label-small">Nuevo usuario que se conectó:</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="usuario-input" placeholder="Nombre de usuario..." />
+              <button class="btn-accent" onclick="runEj3()">Conectar</button>
+            </div>
+          </div>
+          <div class="output-area mt-3" id="output3" style="display:none"></div>
+        </div>
+      </div>
+
+    </div>
+
+  <footer><div class="container">Proyecto 3 · Array.unshift() · JavaScript Práctico</div></footer>
+  <script src="app.js"></script>
+</body>
+</html>
