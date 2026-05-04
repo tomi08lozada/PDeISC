@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BancoDigital — Alta de Cliente</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ===== HERO HEADER ===== -->
+<header class="bank-header text-white py-4 mb-0">
+  <div class="container d-flex align-items-center gap-3">
+    <i class="bi bi-bank2 fs-1 text-gold"></i>
+    <div>
+      <h1 class="mb-0 display-font">BancoDigital</h1>
+      <small class="text-white-50">Sistema de Alta de Clientes</small>
+    </div>
+  </div>
+</header>
+
+<!-- ===== TABS MÉTODOS ===== -->
+<nav class="method-nav">
+  <div class="container">
+    <ul class="nav nav-tabs border-0" id="methodTabs">
+      <li class="nav-item">
+        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#metodo1">
+          <i class="bi bi-1-circle-fill me-1"></i> getElementById
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#metodo2">
+          <i class="bi bi-2-circle-fill me-1"></i> querySelector
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#metodo3">
+          <i class="bi bi-3-circle-fill me-1"></i> FormData API
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== CONTENIDO PRINCIPAL ===== -->
+<main class="container py-5">
+  <div class="row g-5 align-items-start">
+
+    <!-- ── Columna formularios ── -->
+    <div class="col-lg-7">
+      <div class="tab-content" id="methodTabsContent">
+
+        <!-- ════ MÉTODO 1 — getElementById ════ -->
+        <div class="tab-pane fade show active" id="metodo1">
+          <div class="card form-card shadow-lg">
+            <div class="card-header method-header bg-m1">
+              <span class="badge-method">Método 1</span>
+              <h5 class="mb-0 mt-1">Lectura por <code>getElementById</code></h5>
+              <p class="text-white-50 small mb-0">
+                Accede a cada campo usando su atributo <code>id</code> único.
+              </p>
+            </div>
+            <div class="card-body p-4">
+              <!-- Formulario bancario: apertura de cuenta -->
+              <form id="formM1" novalidate>
+
+                <div class="row g-3">
+                  <!-- Nombre -->
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">Nombre</label>
+                    <input type="text" id="m1_nombre" class="form-control fc-custom"
+                           placeholder="Tomás" required/>
+                  </div>
+                  <!-- Apellido -->
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">Apellido</label>
+                    <input type="text" id="m1_apellido" class="form-control fc-custom"
+                           placeholder="Lozada" required/>
+                  </div>
+                  <!-- DNI -->
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">DNI</label>
+                    <input type="text" id="m1_dni" class="form-control fc-custom"
+                           placeholder="12345678" maxlength="8" required/>
+                  </div>
+                  <!-- Tipo de cuenta -->
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">Tipo de Cuenta</label>
+                    <select id="m1_tipo" class="form-select fc-custom" required>
+                      <option value="">Seleccionar…</option>
+                      <option>Cuenta Corriente</option>
+                      <option>Caja de Ahorro $</option>
+                      <option>Caja de Ahorro USD</option>
+                    </select>
+                  </div>
+                  <!-- Email -->
+                  <div class="col-12">
+                    <label class="form-label fw-semibold">Email</label>
+                    <input type="email" id="m1_email" class="form-control fc-custom"
+                           placeholder="tomi@mail.com" required/>
+                  </div>
+                  <!-- Depósito inicial -->
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">Depósito Inicial ($)</label>
+                    <input type="number" id="m1_deposito" class="form-control fc-custom"
+                           placeholder="5000" min="0"/>
+                  </div>
+                  <!-- Sucursal -->
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">Sucursal</label>
+                    <select id="m1_sucursal" class="form-select fc-custom">
+                      <option value="">Seleccionar…</option>
+                      <option>Casa Central</option>
+                      <option>Mar del Plata</option>
+                      <option>Buenos Aires</option>
+                      <option>Córdoba</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button type="button" class="btn btn-m1 w-100 mt-4"
+                        onclick="leerMetodo1()">
+                  <i class="bi bi-send-fill me-2"></i>Registrar con getElementById
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- ════ MÉTODO 2 — querySelector ════ -->
+        <div class="tab-pane fade" id="metodo2">
+          <div class="card form-card shadow-lg">
+            <div class="card-header method-header bg-m2">
+              <span class="badge-method">Método 2</span>
+              <h5 class="mb-0 mt-1">Lectura por <code>querySelector</code></h5>
+              <p class="text-white-50 small mb-0">
+                Selecciona los campos usando selectores CSS (<code>.clase</code>, <code>[name]</code>, etc.).
+              </p>
+            </div>
+            <div class="card-body p-4">
+              <form id="formM2" novalidate>
+                <div class="row g-3">
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">Nombre</label>
+                    <input type="text" name="nombre" class="form-control fc-custom campo-m2"
+                           placeholder="Ana" required/>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">Apellido</label>
+                    <input type="text" name="apellido" class="form-control fc-custom campo-m2"
+                           placeholder="García" required/>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">DNI</label>
+                    <input type="text" name="dni" class="form-control fc-custom campo-m2"
+                           placeholder="87654321" maxlength="8" required/>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">Tipo de Cuenta</label>
+                    <select name="tipo" class="form-select fc-custom campo-m2" required>
+                      <option value="">Seleccionar…</option>
+                      <option>Cuenta Corriente</option>
+                      <option>Caja de Ahorro $</option>
+                      <option>Caja de Ahorro USD</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label fw-semibold">Email</label>
+                    <input type="email" name="email" class="form-control fc-custom campo-m2"
+                           placeholder="ana@mail.com" required/>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">Depósito Inicial ($)</label>
+                    <input type="number" name="deposito" class="form-control fc-custom campo-m2"
+                           placeholder="2000" min="0"/>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">Sucursal</label>
+                    <select name="sucursal" class="form-select fc-custom campo-m2">
+                      <option value="">Seleccionar…</option>
+                      <option>Casa Central</option>
+                      <option>Mar del Plata</option>
+                      <option>Buenos Aires</option>
+                      <option>Córdoba</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-m2 w-100 mt-4"
+                        onclick="leerMetodo2()">
+                  <i class="bi bi-send-fill me-2"></i>Registrar con querySelector
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- ════ MÉTODO 3 — FormData API ════ -->
+        <div class="tab-pane fade" id="metodo3">
+          <div class="card form-card shadow-lg">
+            <div class="card-header method-header bg-m3">
+              <span class="badge-method">Método 3</span>
+              <h5 class="mb-0 mt-1">Lectura con <code>FormData API</code></h5>
+              <p class="text-white-50 small mb-0">
+                Captura todos los campos de una vez con el objeto <code>FormData</code>.
+              </p>
+            </div>
+            <div class="card-body p-4">
+              <!-- Importante: el form tiene id para pasarlo a FormData -->
+              <form id="formM3" novalidate>
+                <div class="row g-3">
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">Nombre</label>
+                    <input type="text" name="nombre" class="form-control fc-custom"
+                           placeholder="Luis" required/>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">Apellido</label>
+                    <input type="text" name="apellido" class="form-control fc-custom"
+                           placeholder="Martínez" required/>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">DNI</label>
+                    <input type="text" name="dni" class="form-control fc-custom"
+                           placeholder="11223344" maxlength="8" required/>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">Tipo de Cuenta</label>
+                    <select name="tipo" class="form-select fc-custom" required>
+                      <option value="">Seleccionar…</option>
+                      <option>Cuenta Corriente</option>
+                      <option>Caja de Ahorro $</option>
+                      <option>Caja de Ahorro USD</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label fw-semibold">Email</label>
+                    <input type="email" name="email" class="form-control fc-custom"
+                           placeholder="luis@mail.com" required/>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">Depósito Inicial ($)</label>
+                    <input type="number" name="deposito" class="form-control fc-custom"
+                           placeholder="10000" min="0"/>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label fw-semibold">Sucursal</label>
+                    <select name="sucursal" class="form-select fc-custom">
+                      <option value="">Seleccionar…</option>
+                      <option>Casa Central</option>
+                      <option>Mar del Plata</option>
+                      <option>Buenos Aires</option>
+                      <option>Córdoba</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-m3 w-100 mt-4"
+                        onclick="leerMetodo3()">
+                  <i class="bi bi-send-fill me-2"></i>Registrar con FormData
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!-- /tab-content -->
+    </div><!-- /col formularios -->
+
+    <!-- ── Columna resultados ── -->
+    <div class="col-lg-5">
+      <!-- Panel resultado actual -->
+      <div class="card result-card shadow mb-4" id="resultPanel" style="display:none!important">
+        <div class="card-header result-header">
+          <i class="bi bi-person-check-fill me-2 text-gold"></i>
+          <span id="resultTitle">Datos del Cliente</span>
+          <span class="badge bg-success ms-2" id="resultBadge"></span>
+        </div>
+        <div class="card-body p-0">
+          <ul class="list-group list-group-flush" id="resultList"></ul>
+        </div>
+      </div>
+
+      <!-- Lista de usuarios registrados -->
+      <div class="card users-card shadow">
+        <div class="card-header users-header d-flex align-items-center justify-content-between">
+          <span><i class="bi bi-people-fill me-2 text-gold"></i>Clientes Registrados</span>
+          <span class="badge bg-secondary" id="userCount">0</span>
+        </div>
+        <div class="card-body p-0" id="userList">
+          <p class="text-muted small text-center py-4 px-3">
+            Aún no hay clientes registrados.<br/>
+            Completá un formulario para comenzar.
+          </p>
+        </div>
+      </div>
+
+      <!-- Alerta de éxito / error -->
+      <div id="alertBox" class="mt-3" style="display:none"></div>
+    </div>
+
+  </div><!-- /row -->
+</main>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Lógica JS -->
+<script src="app.js"></script>
+</body>
+</html>
+

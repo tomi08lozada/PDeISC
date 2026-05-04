@@ -1,0 +1,241 @@
+/* =====================================================
+   style.css — BancoDigital
+   Diseño elegante, oscuro con acento dorado
+   ===================================================== */
+
+/* ── Variables de color ── */
+:root {
+  --gold:        #C9A84C;
+  --gold-light:  #E8C876;
+  --dark-bg:     #0D1117;
+  --panel-bg:    #161B22;
+  --card-bg:     #1C2333;
+  --border:      #30363D;
+  --text:        #E6EDF3;
+  --text-muted:  #8B949E;
+  --m1:          #1a3a5c;
+  --m2:          #1a3a2c;
+  --m3:          #3a1a2c;
+}
+
+/* ── Reset / base ── */
+body {
+  background: var(--dark-bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+}
+
+.display-font { font-family: 'Playfair Display', serif; }
+
+.text-gold { color: var(--gold) !important; }
+
+/* ── Header banco ── */
+.bank-header {
+  background: linear-gradient(135deg, #0d1117 0%, #1a2744 60%, #0d1117 100%);
+  border-bottom: 2px solid var(--gold);
+  position: relative;
+  overflow: hidden;
+}
+.bank-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg, transparent, transparent 30px,
+    rgba(201,168,76,.04) 30px, rgba(201,168,76,.04) 31px
+  );
+}
+
+/* ── Nav métodos ── */
+.method-nav {
+  background: var(--panel-bg);
+  border-bottom: 1px solid var(--border);
+}
+.method-nav .nav-link {
+  color: var(--text-muted);
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: .75rem .75rem;
+  font-size: .8rem;
+  font-weight: 500;
+  transition: all .25s;
+}
+.method-nav .nav-link:hover  { color: var(--gold); }
+.method-nav .nav-link.active {
+  color: var(--gold) !important;
+  background: transparent;
+  border-bottom-color: var(--gold) !important;
+}
+
+/* ── Cards formulario ── */
+.form-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.method-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.bg-m1 { background: var(--m1); }
+.bg-m2 { background: var(--m2); }
+.bg-m3 { background: var(--m3); }
+
+.badge-method {
+  display: inline-block;
+  background: var(--gold);
+  color: #000;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: .2em .6em;
+  border-radius: 4px;
+  margin-bottom: .25rem;
+}
+
+/* ── Inputs personalizados ── */
+.fc-custom {
+  background: #0d1117 !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  border-radius: 8px !important;
+  transition: border-color .2s, box-shadow .2s;
+}
+.fc-custom:focus {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 3px rgba(201,168,76,.2) !important;
+  outline: none;
+}
+.fc-custom::placeholder { color: var(--text-muted) !important; }
+.fc-custom option { background: #1c2333; }
+
+/* ── Labels ── */
+.form-label { color: var(--text-muted); font-size: .85rem; margin-bottom: .3rem; }
+
+/* ── Botones método ── */
+.btn-m1 {
+  background: linear-gradient(135deg, #1a3a5c, #2563a8);
+  color: #fff; border: none; border-radius: 8px;
+  padding: .65rem; font-weight: 500; letter-spacing: .03em;
+  transition: opacity .2s, transform .1s;
+}
+.btn-m2 {
+  background: linear-gradient(135deg, #1a3a2c, #15803d);
+  color: #fff; border: none; border-radius: 8px;
+  padding: .65rem; font-weight: 500;
+  transition: opacity .2s, transform .1s;
+}
+.btn-m3 {
+  background: linear-gradient(135deg, #3a1a2c, #9d174d);
+  color: #fff; border: none; border-radius: 8px;
+  padding: .65rem; font-weight: 500;
+  transition: opacity .2s, transform .1s;
+}
+.btn-m1:hover, .btn-m2:hover, .btn-m3:hover {
+  opacity: .88; transform: translateY(-1px);
+}
+
+/* ── Panel resultado ── */
+.result-card, .users-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.result-header, .users-header {
+  background: var(--panel-bg);
+  border-bottom: 1px solid var(--border);
+  padding: .9rem 1.25rem;
+  font-weight: 600;
+  font-size: .9rem;
+  color: var(--text);
+}
+
+/* Items resultado */
+#resultList .list-group-item {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+  font-size: .875rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .55rem 1.25rem;
+}
+#resultList .list-group-item .key { color: var(--text-muted); }
+#resultList .list-group-item .val { font-weight: 500; color: var(--gold-light); }
+
+/* Lista de clientes */
+#userList .user-item {
+  border-bottom: 1px solid var(--border);
+  padding: .7rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  animation: fadeSlide .35s ease;
+}
+#userList .user-item:last-child { border-bottom: none; }
+.user-avatar {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--m1), #2563a8);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .85rem; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.user-name   { font-weight: 500; font-size: .9rem; }
+.user-detail { font-size: .78rem; color: var(--text-muted); }
+.user-badge  {
+  margin-left: auto;
+  font-size: .7rem;
+  background: rgba(201,168,76,.15);
+  color: var(--gold);
+  padding: .2em .55em;
+  border-radius: 4px;
+  border: 1px solid rgba(201,168,76,.3);
+  white-space: nowrap;
+}
+
+/* Alerta personalizada */
+.alert-custom {
+  border-radius: 10px;
+  font-size: .875rem;
+  border-left: 4px solid;
+  animation: fadeSlide .3s ease;
+}
+.alert-ok  { background: rgba(21,128,61,.15); border-color: #15803d; color: #4ade80; }
+.alert-err { background: rgba(185,28,28,.15); border-color: #b91c1c; color: #f87171; }
+
+/* ── Código en headers ── */
+code {
+  background: rgba(255,255,255,.1);
+  padding: .1em .35em;
+  border-radius: 4px;
+  font-size: .85em;
+  color: #93c5fd;
+}
+
+/* ── Animación ── */
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: var(--dark-bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ── Evitar scroll horizontal en móvil ── */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}

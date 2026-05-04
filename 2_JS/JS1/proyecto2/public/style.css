@@ -1,0 +1,254 @@
+/* =====================================================
+   style.css — SportStore
+   Estética deportiva: oscuro con naranja energético
+   ===================================================== */
+
+:root {
+  --accent:      #FF5722;
+  --accent-glow: rgba(255,87,34,.25);
+  --accent-lt:   #FF8A65;
+  --dark:        #111318;
+  --panel:       #1A1D24;
+  --card:        #22262F;
+  --border:      #2E3340;
+  --text:        #E8EAF0;
+  --muted:       #7B8294;
+}
+
+body {
+  background: var(--dark);
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  min-height: 100vh;
+}
+
+.display-font { font-family: 'Bebas Neue', sans-serif; letter-spacing: .04em; }
+.text-accent  { color: var(--accent) !important; }
+.text-accent-light { color: var(--accent-lt); }
+.text-muted-light  { color: var(--muted); }
+
+/* ── Header ── */
+.sport-header {
+  background: linear-gradient(90deg, #111318 0%, #1c1f2a 50%, #111318 100%);
+  border-bottom: 2px solid var(--accent);
+}
+
+.stat-pill {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .45rem .9rem;
+  font-size: .85rem;
+  font-weight: 600;
+  display: flex; align-items: center; gap: .4rem;
+}
+.stat-pill.accent {
+  background: rgba(255,87,34,.12);
+  border-color: rgba(255,87,34,.35);
+  color: var(--accent-lt);
+}
+.stat-pill span { font-size: 1.1rem; font-weight: 700; }
+
+/* ── Cards ── */
+.sport-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.sport-card-header {
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  padding: .85rem 1.25rem;
+  color: var(--text);
+  font-size: .9rem;
+}
+
+/* ── Inputs ── */
+.fc {
+  background: var(--dark) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  border-radius: 8px !important;
+}
+.fc:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-glow) !important;
+  outline: none;
+}
+.fc::placeholder { color: var(--muted) !important; }
+.fc option { background: var(--card); }
+.fc-sm { max-width: 100%; font-size: .85rem; padding: .35rem .6rem; }
+
+/* Labels */
+.form-label {
+  color: var(--muted);
+  font-size: .82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: .3rem;
+}
+
+/* Radio */
+.form-check-input { background-color: var(--dark); border-color: var(--border); }
+.form-check-input:checked {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+.form-check-label { color: var(--text); font-size: .9rem; }
+
+/* Textarea */
+textarea.fc { resize: none; }
+
+/* Mensajes de error inline */
+.invalid-msg {
+  color: #fc8181;
+  font-size: .78rem;
+  min-height: 1rem;
+  margin-top: .2rem;
+}
+
+/* ── Botones ── */
+.btn-accent {
+  background: var(--accent);
+  color: #fff; border: none;
+  border-radius: 8px; font-weight: 700;
+  padding: .65rem;
+  transition: transform .15s, box-shadow .15s;
+}
+.btn-accent:hover {
+  background: #e64a19;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,87,34,.4);
+}
+
+.btn-method {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-align: left;
+  font-size: .85rem;
+  padding: .5rem .85rem;
+  transition: all .2s;
+}
+.btn-method:hover, .btn-method.active {
+  background: rgba(255,87,34,.12);
+  border-color: var(--accent);
+  color: var(--accent-lt);
+}
+.btn-method code {
+  background: rgba(255,255,255,.08);
+  padding: .1em .35em;
+  border-radius: 4px;
+  font-size: .82em;
+  color: #93c5fd;
+}
+
+.method-info {
+  background: var(--panel);
+  border-radius: 8px;
+  font-size: .82rem;
+  color: var(--muted);
+}
+.method-info code { color: #93c5fd; }
+
+/* ── Tarjetas producto ── */
+.product-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  position: relative;
+  transition: transform .2s, border-color .2s;
+  animation: popIn .3s ease;
+}
+.product-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,87,34,.4);
+}
+.product-icon {
+  width: 44px; height: 44px;
+  background: rgba(255,87,34,.12);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  color: var(--accent-lt);
+  margin-bottom: .7rem;
+}
+.product-name  { font-weight: 700; font-size: .95rem; margin-bottom: .15rem; }
+.product-sport { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.product-price { font-size: 1.1rem; font-weight: 800; color: var(--accent-lt); }
+.product-meta  { font-size: .75rem; color: var(--muted); }
+.product-badge {
+  position: absolute; top: .7rem; right: .7rem;
+  font-size: .65rem; font-weight: 700; text-transform: uppercase;
+  padding: .2em .55em; border-radius: 4px;
+}
+.badge-nuevo        { background: rgba(22,163,74,.15);  color: #4ade80; border: 1px solid rgba(22,163,74,.3);  }
+.badge-usado        { background: rgba(202,138,4,.15);  color: #fbbf24; border: 1px solid rgba(202,138,4,.3);  }
+.badge-reacondicionado { background: rgba(99,102,241,.15); color: #a5b4fc; border: 1px solid rgba(99,102,241,.3); }
+.badge-idx {
+  background: rgba(255,87,34,.15);
+  color: var(--accent-lt);
+  border: 1px solid rgba(255,87,34,.3);
+  font-size: .7rem;
+  font-weight: 700;
+  padding: .15em .5em;
+  border-radius: 4px;
+}
+
+.btn-delete-product {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: .75rem; border-radius: 6px;
+  padding: .2rem .5rem;
+  transition: all .2s;
+}
+.btn-delete-product:hover { background: rgba(239,68,68,.15); color: #f87171; border-color: rgba(239,68,68,.35); }
+
+/* ── Consola array ── */
+.console-pre {
+  background: #0a0c10;
+  color: #a8d8ea;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: .78rem;
+  padding: 1rem 1.25rem;
+  max-height: 220px;
+  overflow-y: auto;
+  border: none;
+  border-radius: 0 0 12px 12px;
+}
+
+/* ── Animaciones ── */
+@keyframes popIn {
+  from { opacity: 0; transform: scale(.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ── Evitar scroll horizontal en móvil ── */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ── Evitar scroll horizontal en móvil ── */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}

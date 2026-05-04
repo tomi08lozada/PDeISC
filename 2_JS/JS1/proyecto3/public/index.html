@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PersonDB — Almacén de Personas</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@800&display=swap" rel="stylesheet"/>
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="pdb-header">
+  <div class="container py-3">
+
+    <!-- Fila superior: logo + título + controles -->
+    <div class="d-flex align-items-center gap-2 gap-sm-3">
+
+      <!-- Ícono logo -->
+      <div class="logo-icon flex-shrink-0">
+        <i class="bi bi-person-vcard-fill"></i>
+      </div>
+
+      <!-- Título (ocupa el espacio sobrante) -->
+      <div class="flex-grow-1" style="min-width:0">
+        <h1 class="mb-0 display-font header-title">PersonDB</h1>
+        <!-- El subtítulo se oculta en móvil para no empujar nada -->
+        <small class="text-muted-c d-none d-sm-block">
+          Almacén de Datos Personales — LocalStorage
+        </small>
+      </div>
+
+      <!-- Contador + botón (siempre visibles, tamaño compacto en móvil) -->
+      <div class="d-flex align-items-center gap-2 flex-shrink-0">
+        <div class="header-stat">
+          <span class="stat-num" id="headerCount">0</span>
+          <small>personas</small>
+        </div>
+        <button class="btn btn-outline-danger btn-sm header-btn-db"
+                onclick="borrarTodo()" title="Borrar todo el LocalStorage">
+          <i class="bi bi-database-x"></i>
+          <span class="d-none d-md-inline ms-1">Limpiar DB</span>
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</header>
+
+<!-- Barra de estado LocalStorage -->
+<div class="ls-bar">
+  <div class="container d-flex align-items-center gap-2 py-1">
+    <i class="bi bi-database-fill-check text-green"></i>
+    <small id="lsStatus">LocalStorage activo — 0 registros guardados</small>
+  </div>
+</div>
+
+<!-- ===== CONTENIDO ===== -->
+<main class="container py-5">
+  <div class="row g-5">
+
+    <!-- ── Columna FORMULARIO ── -->
+    <div class="col-lg-6 col-xl-5">
+      <div class="card pdb-card shadow-lg">
+        <div class="card-header pdb-card-header">
+          <i class="bi bi-person-plus-fill me-2 text-purple"></i>
+          <strong>Registrar Persona</strong>
+        </div>
+        <div class="card-body p-4">
+          <form id="formPersona" novalidate autocomplete="off">
+
+            <!-- ── Sección Datos Personales ── -->
+            <div class="section-title">
+              <i class="bi bi-person me-1"></i> Datos Personales
+            </div>
+
+            <div class="row g-3 mb-3">
+              <!-- Nombre -->
+              <div class="col-sm-6">
+                <label class="form-label">Nombre *</label>
+                <input type="text" id="p_nombre" name="nombre"
+                       class="form-control fc" placeholder="Tomás" required/>
+                <div class="err-msg" id="e_nombre"></div>
+              </div>
+              <!-- Apellido -->
+              <div class="col-sm-6">
+                <label class="form-label">Apellido *</label>
+                <input type="text" id="p_apellido" name="apellido"
+                       class="form-control fc" placeholder="Lozada" required/>
+                <div class="err-msg" id="e_apellido"></div>
+              </div>
+              <!-- Edad -->
+              <div class="col-sm-4">
+                <label class="form-label">Edad *</label>
+                <input type="number" id="p_edad" name="edad"
+                       class="form-control fc" placeholder="30" min="0" max="120" required/>
+                <div class="err-msg" id="e_edad"></div>
+              </div>
+              <!-- Fecha de nacimiento -->
+              <div class="col-sm-8">
+                <label class="form-label">Fecha de Nacimiento *</label>
+                <input type="date" id="p_fechanac" name="fechanac"
+                       class="form-control fc" required/>
+                <div class="err-msg" id="e_fechanac"></div>
+              </div>
+              <!-- Sexo -->
+              <div class="col-12">
+                <label class="form-label">Sexo *</label>
+                <div class="d-flex gap-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio"
+                           name="sexo" id="sexo_m" value="Masculino" required/>
+                    <label class="form-check-label" for="sexo_m">
+                      <i class="bi bi-gender-male me-1"></i>Masculino
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio"
+                           name="sexo" id="sexo_f" value="Femenino"/>
+                    <label class="form-check-label" for="sexo_f">
+                      <i class="bi bi-gender-female me-1"></i>Femenino
+                    </label>
+                  </div>
+                </div>
+                <div class="err-msg" id="e_sexo"></div>
+              </div>
+            </div>
+
+            <!-- ── Sección Identidad ── -->
+            <div class="section-title mt-2">
+              <i class="bi bi-card-text me-1"></i> Identidad
+            </div>
+
+            <div class="row g-3 mb-3">
+              <!-- Documento -->
+              <div class="col-sm-6">
+                <label class="form-label">N° Documento *</label>
+                <input type="text" id="p_documento" name="documento"
+                       class="form-control fc" placeholder="12345678" maxlength="10" required/>
+                <div class="err-msg" id="e_documento"></div>
+              </div>
+              <!-- Estado civil -->
+              <div class="col-sm-6">
+                <label class="form-label">Estado Civil *</label>
+                <select id="p_estadocivil" name="estadocivil" class="form-select fc" required>
+                  <option value="">Seleccionar…</option>
+                  <option>Soltero/a</option>
+                  <option>Casado/a</option>
+                  <option>Divorciado/a</option>
+                  <option>Viudo/a</option>
+                  <option>En pareja</option>
+                </select>
+                <div class="err-msg" id="e_estadocivil"></div>
+              </div>
+              <!-- Nacionalidad -->
+              <div class="col-sm-6">
+                <label class="form-label">Nacionalidad *</label>
+                <select id="p_nacionalidad" name="nacionalidad" class="form-select fc" required>
+                  <option value="">Seleccionar…</option>
+                  <option>Argentina</option>
+                  <option>Brasileña</option>
+                  <option>Chilena</option>
+                  <option>Uruguaya</option>
+                  <option>Boliviana</option>
+                  <option>Paraguaya</option>
+                  <option>Española</option>
+                  <option>Italiana</option>
+                  <option>Otra</option>
+                </select>
+                <div class="err-msg" id="e_nacionalidad"></div>
+              </div>
+            </div>
+
+            <!-- ── Sección Contacto ── -->
+            <div class="section-title mt-2">
+              <i class="bi bi-telephone me-1"></i> Contacto
+            </div>
+
+            <div class="row g-3 mb-3">
+              <!-- Teléfono -->
+              <div class="col-sm-6">
+                <label class="form-label">Teléfono *</label>
+                <input type="tel" id="p_telefono" name="telefono"
+                       class="form-control fc" placeholder="2234567890" required/>
+                <div class="err-msg" id="e_telefono"></div>
+              </div>
+              <!-- Mail -->
+              <div class="col-sm-6">
+                <label class="form-label">Email *</label>
+                <input type="email" id="p_mail" name="mail"
+                       class="form-control fc" placeholder="tomi@mail.com" required/>
+                <div class="err-msg" id="e_mail"></div>
+              </div>
+            </div>
+
+            <!-- ── Sección Hijos ── -->
+            <div class="section-title mt-2">
+              <i class="bi bi-people me-1"></i> Familia
+            </div>
+
+            <div class="row g-3 mb-4">
+              <!-- ¿Tiene hijos? -->
+              <div class="col-12">
+                <label class="form-label">¿Tiene hijos?</label>
+                <div class="d-flex gap-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio"
+                           name="tieneHijos" id="hijos_si" value="si"
+                           onchange="toggleHijos(this)"/>
+                    <label class="form-check-label" for="hijos_si">Sí</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio"
+                           name="tieneHijos" id="hijos_no" value="no"
+                           onchange="toggleHijos(this)" checked/>
+                    <label class="form-check-label" for="hijos_no">No</label>
+                  </div>
+                </div>
+              </div>
+              <!-- Cantidad de hijos (se muestra dinámicamente) -->
+              <div class="col-sm-6" id="cantHijosField" style="display:none">
+                <label class="form-label">Cantidad de Hijos</label>
+                <input type="number" id="p_cantHijos" name="cantHijos"
+                       class="form-control fc" placeholder="2" min="1" max="30"/>
+                <div class="err-msg" id="e_cantHijos"></div>
+              </div>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="d-grid gap-2">
+              <button type="button" class="btn btn-save w-100" onclick="guardarPersona()">
+                <i class="bi bi-floppy-fill me-2"></i>Guardar en LocalStorage
+              </button>
+              <button type="button" class="btn btn-outline-secondary btn-sm" onclick="limpiarForm()">
+                <i class="bi bi-eraser me-1"></i>Limpiar formulario
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Columna LISTADO ── -->
+    <div class="col-lg-6 col-xl-7">
+
+      <!-- Alerta de resultado -->
+      <div id="alertZone" class="mb-4" style="display:none"></div>
+
+      <!-- Buscador -->
+      <div class="d-flex gap-2 mb-3 flex-wrap align-items-center">
+        <h5 class="mb-0 flex-grow-1 text-purple-lt fw-bold">
+          <i class="bi bi-list-ul me-2"></i>Personas Almacenadas
+        </h5>
+        <input type="text" id="busqueda" class="form-control fc fc-sm"
+               placeholder="🔍 Buscar por nombre…" oninput="renderLista()"/>
+      </div>
+
+      <!-- Lista de personas -->
+      <div id="personasList"></div>
+
+      <!-- Panel de detalle (modal inline) -->
+      <div id="detallePanel" class="card pdb-card shadow mt-4" style="display:none">
+        <div class="card-header pdb-card-header d-flex justify-content-between">
+          <span><i class="bi bi-person-circle me-2 text-purple"></i><strong id="detalleTitulo"></strong></span>
+          <button class="btn-close-custom" onclick="cerrarDetalle()">✕</button>
+        </div>
+        <div class="card-body p-0">
+          <div id="detalleContenido" class="row g-0"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Lógica JS -->
+<script src="app.js"></script>
+</body>
+</html>
