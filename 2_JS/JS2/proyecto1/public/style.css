@@ -1,0 +1,469 @@
+/* ── Importaciones de fuentes (fallback si no cargó el link) ── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap');
+
+/* ══════════════════════════════════════════
+   VARIABLES — TEMA OSCURO (por defecto)
+══════════════════════════════════════════ */
+[data-theme="dark"] {
+  --bg-body:        #0d0f1a;        /* fondo general */
+  --bg-card:        #13162a;        /* fondo de tarjetas */
+  --bg-card-hover:  #191d35;
+  --border-color:   #2a2f52;        /* bordes sutiles */
+  --accent:         #6c63ff;        /* violeta eléctrico */
+  --accent-hover:   #8b85ff;
+  --accent-soft:    rgba(108,99,255,.15);
+  --text-primary:   #e8eaf6;
+  --text-secondary: #9099c4;
+  --text-muted:     #5a6190;
+  --success:        #43d98e;
+  --danger:         #ff6b6b;
+  --progress-bg:    #1e2342;
+  --badge-bg:       #1e2342;
+  --badge-text:     #a5addb;
+  --shadow:         0 8px 32px rgba(0,0,0,.55);
+  --shadow-sm:      0 2px 12px rgba(0,0,0,.35);
+  --navbar-bg:      rgba(13,15,26,.85);
+  --footer-bg:      #0b0d18;
+}
+
+/* ══════════════════════════════════════════
+   VARIABLES — TEMA CLARO
+══════════════════════════════════════════ */
+[data-theme="light"] {
+  --bg-body:        #f0f2ff;
+  --bg-card:        #ffffff;
+  --bg-card-hover:  #f7f8ff;
+  --border-color:   #dde1f5;
+  --accent:         #4f46e5;
+  --accent-hover:   #6c63ff;
+  --accent-soft:    rgba(79,70,229,.12);
+  --text-primary:   #1a1d35;
+  --text-secondary: #4a5080;
+  --text-muted:     #9099c4;
+  --success:        #16a34a;
+  --danger:         #dc2626;
+  --progress-bg:    #e8eaf6;
+  --badge-bg:       #eef0ff;
+  --badge-text:     #4f46e5;
+  --shadow:         0 8px 32px rgba(79,70,229,.10);
+  --shadow-sm:      0 2px 12px rgba(79,70,229,.07);
+  --navbar-bg:      rgba(240,242,255,.90);
+  --footer-bg:      #e8eaf6;
+}
+
+/* ══════════════════════════════════════════
+   RESET / BASE
+══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Syne', sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color .35s ease, color .35s ease;
+}
+
+main { flex: 1; }
+
+/* ══════════════════════════════════════════
+   NAVBAR
+══════════════════════════════════════════ */
+.app-navbar {
+  background: var(--navbar-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background .35s;
+}
+
+.app-brand {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--accent);
+  letter-spacing: -.5px;
+}
+
+/* ── Botón tema ── */
+.btn-theme-toggle {
+  background: var(--accent-soft);
+  border: 1px solid var(--border-color);
+  color: var(--accent);
+  border-radius: 50px;
+  padding: .4rem .9rem;
+  font-size: 1.05rem;
+  transition: background .25s, color .25s, transform .2s;
+}
+.btn-theme-toggle:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: rotate(15deg) scale(1.08);
+}
+
+/* ══════════════════════════════════════════
+   TARJETA APP
+══════════════════════════════════════════ */
+.app-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  transition: background .35s, border-color .35s, box-shadow .35s;
+}
+
+/* ══════════════════════════════════════════
+   TIPOGRAFÍA INTERIOR
+══════════════════════════════════════════ */
+.app-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -.5px;
+}
+
+.app-subtitle {
+  color: var(--text-secondary);
+  font-size: .95rem;
+}
+.app-subtitle strong {
+  color: var(--accent);
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  font-size: .85rem;
+}
+
+/* ══════════════════════════════════════════
+   INPUT Y BOTÓN AGREGAR
+══════════════════════════════════════════ */
+.app-input {
+  background: var(--bg-body) !important;
+  border: 1.5px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  border-radius: 12px 0 0 12px !important;
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  padding: .65rem 1rem;
+  transition: border-color .2s, box-shadow .2s;
+}
+.app-input:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-soft) !important;
+  outline: none;
+}
+.app-input::placeholder { color: var(--text-muted); }
+
+/* Botón agregar */
+.btn-add {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 0 12px 12px 0 !important;
+  font-weight: 700;
+  padding: .65rem 1.4rem;
+  transition: background .2s, transform .15s;
+  white-space: nowrap;
+}
+.btn-add:hover  { background: var(--accent-hover); transform: scale(1.03); }
+.btn-add:active { transform: scale(.97); }
+
+/* ══════════════════════════════════════════
+   MENSAJES DE ERROR
+══════════════════════════════════════════ */
+.app-error {
+  color: var(--danger);
+  font-size: .88rem;
+  font-weight: 600;
+  min-height: 1.2rem;
+  font-family: 'Space Mono', monospace;
+  transition: opacity .2s;
+}
+
+/* ══════════════════════════════════════════
+   CONTADOR Y BARRA DE PROGRESO
+══════════════════════════════════════════ */
+.counter-label {
+  color: var(--text-secondary);
+  font-size: .9rem;
+}
+
+.counter-badge {
+  background: var(--badge-bg);
+  color: var(--accent);
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: .9rem;
+  padding: .25rem .75rem;
+  border-radius: 50px;
+  border: 1px solid var(--border-color);
+  transition: background .35s;
+}
+
+.app-progress {
+  height: 6px;
+  background: var(--progress-bg);
+  border-radius: 10px;
+}
+.app-progress .progress-bar {
+  background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+  border-radius: 10px;
+  transition: width .4s cubic-bezier(.4,0,.2,1);
+}
+
+/* ══════════════════════════════════════════
+   BOTONES SECUNDARIOS
+══════════════════════════════════════════ */
+.btn-save {
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: .75rem 1.25rem;
+  transition: opacity .2s, transform .15s, box-shadow .2s;
+  box-shadow: 0 4px 18px var(--accent-soft);
+}
+.btn-save:hover  { opacity: .9; transform: translateY(-2px); box-shadow: 0 8px 24px var(--accent-soft); }
+.btn-save:active { transform: translateY(0); }
+
+.btn-clear {
+  background: transparent;
+  color: var(--danger);
+  border: 1.5px solid var(--danger);
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: .95rem;
+  padding: .65rem 1.25rem;
+  transition: background .2s, color .2s;
+}
+.btn-clear:hover { background: var(--danger); color: #fff; }
+
+/* ══════════════════════════════════════════
+   GRILLA DE NÚMEROS (chips)
+══════════════════════════════════════════ */
+.numbers-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+}
+
+/* Chip individual */
+.num-chip {
+  display: inline-flex;
+  align-items: center;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: .95rem;
+  padding: .35rem .85rem;
+  border-radius: 50px;
+  border: 1.5px solid var(--border-color);
+
+  /* Animación de entrada */
+  animation: chipIn .3s cubic-bezier(.4,0,.2,1) both;
+}
+
+@keyframes chipIn {
+  from { opacity: 0; transform: scale(.7) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Número de orden dentro del chip */
+.num-chip .chip-index {
+  font-size: .7rem;
+  color: var(--text-muted);
+  margin-right: .4rem;
+}
+
+/* ══════════════════════════════════════════
+   HISTORIAL DE ARCHIVOS
+══════════════════════════════════════════ */
+.history-list { display: flex; flex-direction: column; gap: .5rem; }
+
+.history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-body);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: .6rem 1rem;
+  font-size: .88rem;
+  color: var(--text-secondary);
+  animation: chipIn .3s ease both;
+  transition: background .35s;
+}
+
+.history-item .file-name {
+  font-family: 'Space Mono', monospace;
+  color: var(--text-primary);
+  font-size: .82rem;
+  word-break: break-all;
+}
+
+.btn-download-hist {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: none;
+  border-radius: 8px;
+  padding: .3rem .75rem;
+  font-size: .8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: background .2s, color .2s;
+}
+.btn-download-hist:hover { background: var(--accent); color: #fff; }
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+.app-footer {
+  background: var(--footer-bg);
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: .82rem;
+  font-family: 'Space Mono', monospace;
+  transition: background .35s, border-color .35s;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — móvil
+══════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .app-title { font-size: 1.4rem; }
+  .btn-add   { padding: .65rem .9rem; font-size: .9rem; }
+  .num-chip  { font-size: .85rem; }
+}
+/* ══════════════════════════════════════════
+   CHIPS — BOTONES DE EDITAR / BORRAR
+══════════════════════════════════════════ */
+
+/* El chip ahora es un flex container para alinear valor + acciones */
+.num-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .3rem .5rem .3rem .85rem;  /* menos padding derecho, lo ocupa el grupo de acciones */
+}
+
+.chip-value {
+  flex: 1;
+}
+
+/* Grupo de botones dentro del chip */
+.chip-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: .15rem;
+  margin-left: .2rem;
+}
+
+/* Botón genérico dentro del chip */
+.chip-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: .72rem;
+  line-height: 1;
+  transition: background .18s, color .18s, transform .15s;
+  padding: 0;
+}
+
+/* Botón editar */
+.chip-edit {
+  color: var(--accent);
+}
+.chip-edit:hover {
+  background: var(--accent-soft);
+  transform: scale(1.15);
+}
+
+/* Botón borrar */
+.chip-delete {
+  color: var(--danger);
+}
+.chip-delete:hover {
+  background: rgba(255,107,107,.15);
+  transform: scale(1.15);
+}
+
+/* Botón confirmar (edición) */
+.chip-confirm {
+  color: var(--success);
+}
+.chip-confirm:hover {
+  background: rgba(67,217,142,.15);
+  transform: scale(1.15);
+}
+
+/* Botón cancelar (edición) */
+.chip-cancel {
+  color: var(--text-muted);
+}
+.chip-cancel:hover {
+  background: var(--bg-body);
+  transform: scale(1.15);
+}
+
+/* Input inline dentro del chip al editar */
+.chip-input {
+  width: 5.5rem;
+  background: var(--bg-body);
+  border: 1.5px solid var(--accent);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: 'Space Mono', monospace;
+  font-size: .88rem;
+  font-weight: 700;
+  padding: .1rem .45rem;
+  text-align: center;
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-soft);
+  transition: border-color .2s, box-shadow .2s;
+}
+.chip-input:focus {
+  border-color: var(--accent-hover);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* Estado de chip en modo edición */
+.num-chip.editing {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+/* FULLSCREEN LAYOUT */
+.app-main {
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@media (min-width: 1200px) {
+  .app-main {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}

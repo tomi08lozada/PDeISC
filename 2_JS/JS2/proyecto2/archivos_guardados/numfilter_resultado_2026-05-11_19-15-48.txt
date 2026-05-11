@@ -1,0 +1,27 @@
+NumFilter — Resultado del filtrado
+────────────────────────────────────────
+Fecha y hora    : 2026-05-11 19:15:48
+Total leídos    : 10
+Útiles          : 9
+Descartados     : 1
+% útiles        : 90.0%
+────────────────────────────────────────
+
+NÚMEROS ÚTILES (mismo dígito al inicio y al final, orden ascendente):
+
+  #01  →  2
+  #02  →  3
+  #03  →  3
+  #04  →  3
+  #05  →  3
+  #06  →  3
+  #07  →  4
+  #08  →  4
+  #09  →  4
+
+────────────────────────────────────────
+NÚMEROS DESCARTADOS:
+
+  #01  →  42
+
+────────────────────────────────────────
