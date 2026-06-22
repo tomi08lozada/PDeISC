@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyecto 2 - Formulario de Usuario</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-dark px-3 px-md-4">
+      <span class="navbar-brand">Proyecto 2 - Alta de usuario</span>
+      <button id="btnToggleTheme" type="button">Modo noche</button>
+    </nav>
+
+    <main class="container-fluid app-shell">
+      <div class="row g-4 align-items-stretch">
+        <section class="col-12 col-xl-5">
+          <div class="panel h-100">
+            <span class="eyebrow">POST con axios</span>
+            <h1>Crear usuario sin repetir datos</h1>
+            <p>
+              El formulario compara nombre, apodo y email contra los usuarios de
+              la API publica y contra los que agregues durante esta sesion.
+            </p>
+
+            <form id="formularioUsuario" class="mt-4" novalidate>
+              <div class="row g-3">
+                <div class="col-12">
+                  <label for="inputNombre" class="form-label">Nombre</label>
+                  <input
+                    type="text"
+                    id="inputNombre"
+                    class="form-control"
+                    placeholder="Ej: Maria Garcia"
+                    autocomplete="name"
+                  />
+                  <div class="invalid-feedback">El nombre debe tener al menos 2 caracteres.</div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label for="inputApodo" class="form-label">Apodo</label>
+                  <input
+                    type="text"
+                    id="inputApodo"
+                    class="form-control"
+                    placeholder="Ej: mari.g"
+                    autocomplete="nickname"
+                  />
+                  <div class="invalid-feedback">El apodo debe tener al menos 2 caracteres.</div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label for="inputEmail" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    id="inputEmail"
+                    class="form-control"
+                    placeholder="Ej: maria@ejemplo.com"
+                    autocomplete="email"
+                  />
+                  <div class="invalid-feedback">Ingresa un email valido.</div>
+                </div>
+              </div>
+
+              <button type="submit" id="btnEnviar" class="btn btn-primary w-100 mt-4">
+                Crear usuario
+              </button>
+            </form>
+
+            <div id="resultado" class="mt-4"></div>
+          </div>
+        </section>
+
+        <section class="col-12 col-xl-7">
+          <div class="panel h-100">
+            <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center mb-3">
+              <div>
+                <span class="eyebrow">Datos cargados</span>
+                <h2 class="h4 mb-0">Usuarios disponibles</h2>
+              </div>
+              <span id="contadorUsuarios" class="badge text-bg-light">Cargando...</span>
+            </div>
+            <div id="listaUsuarios" class="row g-3"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
