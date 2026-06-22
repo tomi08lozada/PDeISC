@@ -1,0 +1,239 @@
+/*
+ * PROYECTO 3 — Estilos personalizados
+ * Buscador de usuarios con filtrado en tiempo real.
+ * Paleta: verde esmeralda / oscuro medianoche.
+ */
+
+/* ── Variables de tema ─────────────────────────────────────────────────────── */
+:root {
+  --bg-primary: #f0fdf4;
+  --bg-card: #ffffff;
+  --bg-header: #dcfce7;
+  --text-primary: #14532d;
+  --text-secondary: #4b7c5b;
+  --border-color: #bbf7d0;
+  --shadow: 0 2px 12px rgba(22, 163, 74, 0.1);
+  --accent: #16a34a;
+  --accent-light: #22c55e;
+  --search-bg: #ffffff;
+  --highlight: #fef08a;
+}
+
+body.dark-mode {
+  --bg-primary: #052e16;
+  --bg-card: #14532d;
+  --bg-header: #166534;
+  --text-primary: #dcfce7;
+  --text-secondary: #86efac;
+  --border-color: #166534;
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  --accent: #4ade80;
+  --accent-light: #86efac;
+  --search-bg: #052e16;
+  --highlight: #713f12;
+}
+
+/* ── Base ──────────────────────────────────────────────────────────────────── */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+/* ── Navbar ────────────────────────────────────────────────────────────────── */
+.navbar {
+  background: linear-gradient(135deg, #16a34a, #15803d) !important;
+  box-shadow: 0 2px 10px rgba(22, 163, 74, 0.4);
+}
+
+body.dark-mode .navbar {
+  background: linear-gradient(135deg, #14532d, #052e16) !important;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+/* ── Botón día/noche ───────────────────────────────────────────────────────── */
+#btnToggleTheme {
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  color: white;
+  background: transparent;
+  border-radius: 50px;
+  padding: 0.35rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+#btnToggleTheme:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Hero ──────────────────────────────────────────────────────────────────── */
+.hero {
+  padding: 2.5rem 0 1.5rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--text-primary);
+  transition: color 0.3s;
+}
+
+.hero p {
+  color: var(--text-secondary);
+  transition: color 0.3s;
+}
+
+/* ── Barra de búsqueda ─────────────────────────────────────────────────────── */
+.search-wrapper {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto 2rem;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+#campoBusqueda {
+  background-color: var(--search-bg) !important;
+  border: 2px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  border-radius: 50px !important;
+  padding: 0.8rem 1rem 0.8rem 2.8rem !important;
+  font-size: 1rem;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+#campoBusqueda:focus {
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.25) !important;
+  border-color: var(--accent) !important;
+  outline: none;
+}
+
+#campoBusqueda::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+/* ── Contador de resultados ────────────────────────────────────────────────── */
+#contadorResultados {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  transition: color 0.3s;
+}
+
+/* ── Tarjetas de usuario ───────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(22, 163, 74, 0.18);
+}
+
+/* ── Avatar ────────────────────────────────────────────────────────────────── */
+.avatar-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Nombre con highlight ──────────────────────────────────────────────────── */
+.nombre-usuario mark {
+  background: var(--highlight);
+  padding: 0 2px;
+  border-radius: 3px;
+}
+
+/* ── Info del usuario ──────────────────────────────────────────────────────── */
+.info-chip {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  transition: color 0.3s;
+}
+
+/* ── Mensaje vacío ─────────────────────────────────────────────────────────── */
+#mensajeVacio {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 3rem;
+  font-size: 1.1rem;
+  display: none;
+}
+
+/* ── Estado inicial ────────────────────────────────────────────────────────── */
+#estadoInicial {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 2rem;
+}
+
+/* ── Botón cargar ──────────────────────────────────────────────────────────── */
+#btnCargar {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  border: none;
+  color: white;
+  border-radius: 50px;
+  padding: 0.7rem 2rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+#btnCargar:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+body.dark-mode #btnCargar {
+  background: linear-gradient(135deg, #4ade80, #16a34a);
+  color: #052e16;
+}
+
+/* ── Animación de entrada de cards ─────────────────────────────────────────── */
+.card-animate {
+  animation: cardIn 0.3s ease both;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
