@@ -1,0 +1,166 @@
+/*
+ * PROYECTO 1 — Estilos personalizados
+ * Complementa Bootstrap con variables CSS para modo día/noche.
+ * La clase .dark-mode en <body> activa el tema oscuro.
+ */
+
+/* ── Variables de tema ─────────────────────────────────────────────────────── */
+:root {
+  --bg-primary: #f8f9fa;
+  --bg-card: #ffffff;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --accent: #0d6efd;
+  --badge-bg: #e9f0ff;
+  --badge-text: #0d6efd;
+}
+
+body.dark-mode {
+  --bg-primary: #121212;
+  --bg-card: #1e1e2e;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --border-color: #334155;
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  --accent: #60a5fa;
+  --badge-bg: #1e3a5f;
+  --badge-text: #93c5fd;
+}
+
+/* ── Base ──────────────────────────────────────────────────────────────────── */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+/* ── Navbar ────────────────────────────────────────────────────────────────── */
+.navbar {
+  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%) !important;
+  box-shadow: 0 2px 8px rgba(13, 110, 253, 0.35);
+}
+
+body.dark-mode .navbar {
+  background: linear-gradient(135deg, #1e3a5f 0%, #0f2442 100%) !important;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: -0.3px;
+}
+
+/* ── Botón día/noche ───────────────────────────────────────────────────────── */
+#btnToggleTheme {
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  color: white;
+  background: transparent;
+  border-radius: 50px;
+  padding: 0.35rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+#btnToggleTheme:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: white;
+}
+
+/* ── Cards de usuario ──────────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(13, 110, 253, 0.15);
+}
+
+.card-title {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.card-text {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* ── Ícono de avatar ───────────────────────────────────────────────────────── */
+.avatar-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+body.dark-mode .avatar-circle {
+  background: #1e3a5f;
+  color: #93c5fd;
+}
+
+/* ── Badge de email ────────────────────────────────────────────────────────── */
+.email-badge {
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  font-size: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 50px;
+  font-weight: 500;
+  word-break: break-all;
+}
+
+/* ── Sección hero ──────────────────────────────────────────────────────────── */
+.hero {
+  padding: 3rem 0 2rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.hero p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  transition: color 0.3s ease;
+}
+
+/* ── Estado de carga / error ───────────────────────────────────────────────── */
+#estadoMensaje {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* ── Spinner ───────────────────────────────────────────────────────────────── */
+.spinner-border {
+  color: var(--accent);
+}
+
+/* ── Responsive: en mobile las cards ocupan toda la fila ─────────────────── */
+@media (max-width: 576px) {
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+}
