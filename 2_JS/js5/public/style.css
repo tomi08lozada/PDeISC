@@ -1,0 +1,182 @@
+/**
+ * styles.css
+ * Estilos personalizados para el sistema de gestión de alumnos.
+ * Trabaja en conjunto con Bootstrap 5.3 y soporta modo claro/oscuro
+ * mediante el atributo data-bs-theme en el elemento <html>.
+ */
+
+/* ── Variables de transición ─────────────────────────────────────────────── */
+:root {
+  --transition-speed: 0.3s;
+  --navbar-bg-light: #1a1f36;
+  --navbar-bg-dark: #0d1117;
+  --accent: #4f6ef7;
+  --accent-hover: #3a57e8;
+}
+
+/* ── Transición suave al cambiar tema ────────────────────────────────────── */
+body,
+.card,
+.table,
+.navbar,
+.modal-content,
+.alert,
+.form-control,
+.btn {
+  transition: background-color var(--transition-speed) ease,
+              color var(--transition-speed) ease,
+              border-color var(--transition-speed) ease;
+}
+
+/* ── Navbar: siempre oscura para contraste visual ────────────────────────── */
+#mainNavbar {
+  background-color: var(--navbar-bg-light);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+#mainNavbar .navbar-brand {
+  color: #ffffff;
+  font-size: 1.25rem;
+  letter-spacing: -0.3px;
+}
+
+#mainNavbar .navbar-brand:hover {
+  color: #c9d4ff;
+}
+
+#mainNavbar #modeLabel {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ── Modo oscuro: ajustes del navbar ─────────────────────────────────────── */
+[data-bs-theme="dark"] #mainNavbar {
+  background-color: var(--navbar-bg-dark);
+}
+
+/* ── Body: fondo diferenciado por tema ───────────────────────────────────── */
+body {
+  min-height: 100vh;
+}
+
+[data-bs-theme="light"] body {
+  background-color: #f0f2f8;
+}
+
+[data-bs-theme="dark"] body {
+  background-color: #0d1117;
+}
+
+/* ── Cards: sutil sombra y bordes ────────────────────────────────────────── */
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+[data-bs-theme="dark"] .card {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.card-header {
+  font-size: 0.95rem;
+  padding: 0.85rem 1.25rem;
+}
+
+/* ── Tabla: filas con hover resaltado ────────────────────────────────────── */
+.table th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.table td {
+  font-size: 0.95rem;
+}
+
+/* ── Botones de acción en la tabla ───────────────────────────────────────── */
+.btn-accion {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  border-radius: 6px;
+}
+
+/* ── Badge de conteo ─────────────────────────────────────────────────────── */
+#badgeTotal {
+  font-size: 0.7rem;
+  min-width: 22px;
+}
+
+/* ── Alert de setup ──────────────────────────────────────────────────────── */
+#setupBanner {
+  border-radius: 12px;
+  border: none;
+}
+
+/* ── Animación de entrada para filas de la tabla ─────────────────────────── */
+@keyframes fadeInRow {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#tablaBody tr {
+  animation: fadeInRow 0.25s ease forwards;
+}
+
+/* ── Toggle de tema: estilo del botón ────────────────────────────────────── */
+#toggleTheme {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.85);
+  min-width: 38px;
+}
+
+#toggleTheme:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+}
+
+/* ── Responsive: tabla con scroll horizontal en móvil ────────────────────── */
+@media (max-width: 576px) {
+  .card-header {
+    font-size: 0.85rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 0.82rem;
+  }
+
+  #setupBanner {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 0.75rem;
+  }
+
+  #setupBanner .btn {
+    align-self: flex-start;
+  }
+}
+
+/* ── Toast: color según tipo ─────────────────────────────────────────────── */
+.toast.toast-success {
+  background-color: #198754;
+  color: white;
+}
+
+.toast.toast-error {
+  background-color: #dc3545;
+  color: white;
+}
+
+.toast.toast-info {
+  background-color: #0dcaf0;
+  color: #000;
+}
