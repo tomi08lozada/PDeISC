@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Ahorcado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<!-- jsPDF por CDN, se usa solo para el botón "Descargar PDF" -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body class="tema-dia">
+
+  <div class="pizarron">
+
+    <header class="barra">
+      <h1 class="titulo" id="titulo" title="Doble click para reiniciar la partida">El Ahorcado</h1>
+      <div class="barra-acciones">
+        <button id="btnCerrarSesion" class="btn btn-secundario btn-sesion oculta" title="Cerrar sesión">Salir</button>
+        <button id="btnTema" class="btn-tema" title="Cambiar entre modo día y modo noche">🌙 Noche</button>
+      </div>
+    </header>
+
+    <main class="contenido">
+
+      <!-- ================= TABLA DE POSICIONES (columna izquierda) ================= -->
+      <section class="panel-tabla">
+        <h2 class="subtitulo">Tabla de posiciones</h2>
+
+        <div class="controles-tabla">
+          <input type="text" id="inputBusqueda" placeholder="Buscar por nombre...">
+          <div class="fila-botones">
+            <button id="btnExportarCSV" class="btn btn-secundario" title="Exportar la tabla con el orden actual">📊 CSV</button>
+            <button id="btnExportarPDF" class="btn btn-secundario" title="Descargar la tabla en PDF">📄 PDF</button>
+          </div>
+        </div>
+
+        <div class="tabla-wrapper">
+          <table id="tablaScores">
+            <thead>
+              <tr>
+                <th data-col="nombre">Nombre <span class="orden-icono"></span></th>
+                <th data-col="tiempo">Tiempo <span class="orden-icono"></span></th>
+                <th data-col="puntos">Puntos <span class="orden-icono"></span></th>
+                <th data-col="fecha">Fecha <span class="orden-icono"></span></th>
+              </tr>
+            </thead>
+            <tbody id="cuerpoTabla">
+              <!-- Se completa dinámicamente -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= JUEGO (columna derecha) ================= -->
+      <section class="panel-juego">
+
+        <div class="fila-jugador">
+          <span class="chip-jugador" id="chipJugador">👤 —</span>
+          <p id="mensajeEstado" class="mensaje-estado"></p>
+        </div>
+
+        <div class="dibujo">
+          <svg id="svgAhorcado" viewBox="0 0 200 250" width="200" height="240">
+            <!-- Base del ahorcado (siempre visible) -->
+            <line x1="10" y1="240" x2="150" y2="240" stroke="var(--color-tiza)" stroke-width="4" stroke-linecap="round"/>
+            <line x1="40" y1="240" x2="40" y2="20" stroke="var(--color-tiza)" stroke-width="4" stroke-linecap="round"/>
+            <line x1="40" y1="20" x2="130" y2="20" stroke="var(--color-tiza)" stroke-width="4" stroke-linecap="round"/>
+            <line x1="130" y1="20" x2="130" y2="50" stroke="var(--color-tiza)" stroke-width="4" stroke-linecap="round"/>
+            <!-- Partes del cuerpo, se muestran/ocultan según errores -->
+            <circle id="parte-cabeza" cx="130" cy="70" r="20" stroke="var(--color-error)" stroke-width="4" fill="none" style="display:none"/>
+            <line id="parte-torso" x1="130" y1="90" x2="130" y2="150" stroke="var(--color-error)" stroke-width="4" stroke-linecap="round" style="display:none"/>
+            <line id="parte-brazo-izq" x1="130" y1="105" x2="105" y2="130" stroke="var(--color-error)" stroke-width="4" stroke-linecap="round" style="display:none"/>
+            <line id="parte-brazo-der" x1="130" y1="105" x2="155" y2="130" stroke="var(--color-error)" stroke-width="4" stroke-linecap="round" style="display:none"/>
+            <line id="parte-pierna-izq" x1="130" y1="150" x2="105" y2="185" stroke="var(--color-error)" stroke-width="4" stroke-linecap="round" style="display:none"/>
+            <line id="parte-pierna-der" x1="130" y1="150" x2="155" y2="185" stroke="var(--color-error)" stroke-width="4" stroke-linecap="round" style="display:none"/>
+          </svg>
+        </div>
+
+        <p id="palabraOculta" class="palabra-oculta">_ _ _ _</p>
+        <p class="intentos">Errores: <span id="contadorErrores">0</span> / 6</p>
+
+        <div id="teclado" class="teclado"></div>
+
+        <div class="acciones-juego">
+          <button id="btnNuevaPalabra" class="btn">Nueva palabra</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Modal de login / registro -->
+  <div id="modalAuth" class="modal">
+    <div class="modal-contenido">
+      <h3 id="tituloAuth">Iniciar sesión</h3>
+      <p class="modal-texto">Creá una cuenta o ingresá para guardar tu puntaje de forma segura.</p>
+      <p id="mensajeAuth" class="mensaje-auth" aria-live="polite"></p>
+      <input type="text" id="inputUsuario" placeholder="Usuario" maxlength="50" autocomplete="username">
+      <input type="password" id="inputPassword" placeholder="Contraseña" maxlength="100" autocomplete="current-password">
+      <div class="acciones-modal">
+        <button id="btnLogin" class="btn">Iniciar sesión</button>
+        <button id="btnRegistro" class="btn btn-secundario">Crear cuenta</button>
+      </div>
+      <button id="btnAlternarAuth" class="btn-link" type="button">¿No tenés cuenta? Registrate</button>
+    </div>
+  </div>
+
+  <script src="js/word-api.js"></script>
+  <script src="js/hangman.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/scoreboard.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
