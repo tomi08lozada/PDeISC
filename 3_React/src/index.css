@@ -1,0 +1,15 @@
+/*
+ * ESTILOS GLOBALES
+ */
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-width: 320px;
+
+    min-height: 100vh;
+
+    margin: 0;
+}

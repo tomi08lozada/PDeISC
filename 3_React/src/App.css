@@ -1,0 +1,344 @@
+/*
+ * PROYECTO 5
+ * FORMULARIO SIMPLE
+ */
+
+* {
+    box-sizing: border-box;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+body {
+    margin: 0;
+
+    min-width: 320px;
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* =========================
+   ESTRUCTURA GENERAL
+   ========================= */
+
+main {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+
+/* =========================
+   MODO DÍA
+   ========================= */
+
+.modo-dia {
+
+    background-color: #f1f3f6;
+
+    color: #171717;
+}
+
+
+/* =========================
+   MODO NOCHE
+   ========================= */
+
+.modo-noche {
+
+    background-color: #101114;
+
+    color: white;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.numero-proyecto {
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    opacity: 0.6;
+}
+
+
+/* =========================
+   TARJETA
+   ========================= */
+
+.formulario-usuario {
+
+    width: 100%;
+
+    min-height: 70vh;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff7675,
+            #6c5ce7
+        );
+
+    color: white;
+
+    box-shadow:
+        0 25px 60px
+        rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/*
+ * Hover de la tarjeta.
+ */
+
+.formulario-usuario:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 35px 80px
+        rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================
+   TÍTULO
+   ========================= */
+
+.etiqueta {
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    opacity: 0.8;
+}
+
+.formulario-usuario h1 {
+
+    margin:
+        20px 0;
+
+    font-size:
+        clamp(
+            60px,
+            10vw,
+            130px
+        );
+
+    line-height: 0.85;
+}
+
+.descripcion {
+
+    font-size:
+        clamp(
+            16px,
+            2vw,
+            20px
+        );
+
+    max-width: 450px;
+
+    opacity: 0.9;
+}
+
+
+/* =========================
+   DATO DEL USUARIO
+   ========================= */
+
+.dato-formulario {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.dato-formulario span {
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    opacity: 0.7;
+}
+
+.dato-formulario strong {
+
+    font-size: 24px;
+
+    word-break: break-word;
+}
+
+
+/* =========================
+   INPUT
+   ========================= */
+
+.form-label {
+
+    font-weight: bold;
+}
+
+.form-control {
+
+    min-height: 60px;
+
+    border: none;
+
+    box-shadow: none !important;
+}
+
+.form-control:focus {
+
+    border: none;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(255, 255, 255, 0.3) !important;
+}
+
+
+/* =========================
+   BOTONES
+   ========================= */
+
+button {
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+button:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================
+   MENSAJE
+   ========================= */
+
+.mensaje-bienvenida {
+
+    border-radius: 18px;
+
+    background:
+        rgba(255, 255, 255, 0.12);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.2);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/*
+ * Hover del mensaje.
+ */
+
+.mensaje-bienvenida:hover {
+
+    background:
+        rgba(255, 255, 255, 0.2);
+
+    transform:
+        translateY(-3px);
+}
+
+.mensaje-bienvenida span {
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    opacity: 0.7;
+}
+
+.mensaje-bienvenida h2 {
+
+    margin:
+        10px 0;
+
+    font-size:
+        clamp(
+            24px,
+            4vw,
+            42px
+        );
+
+    word-break: break-word;
+}
+
+.mensaje-bienvenida small {
+
+    opacity: 0.65;
+}
+
+
+/* =========================
+   MENSAJE EXITOSO
+   ========================= */
+
+.mensaje-exitoso {
+
+    background:
+        rgba(46, 213, 115, 0.2);
+
+    border-color:
+        rgba(46, 213, 115, 0.4);
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+
+    font-size: 13px;
+
+    opacity: 0.65;
+}
